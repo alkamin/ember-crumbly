@@ -16,11 +16,11 @@ export default Component.extend({
   tagName: 'li',
   classNameBindings: ['crumbClass'],
 
-  crumbClass: oneWay('breadCrumbs.crumbClass'),
-  linkClass: computed('breadCrumbs.linkClass', 'route.isPrefix', function() {
-    const linkClass = get(this, 'breadCrumbs.linkClass');
+  crumbClass: computed('breadCrumbs.crumbClass','route.isPrefix', function() {
+    const crumbClass = get(this, 'breadCrumbs.crumbClass');
     const isPrefix = get(this, 'route.isPrefix');
-    return isPrefix ? `${linkClass} is-prefix` : linkClass;
+    return isPrefix ? `${crumbClass} is-prefix` : crumbClass;
   }),
+  linkClass: oneWay('breadCrumbs.linkClass'),
   hasBlock: bool('template').readOnly()
 });
