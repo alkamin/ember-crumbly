@@ -3,6 +3,7 @@ import layout from '../templates/components/bread-crumb';
 import computed from 'ember-new-computed';
 
 const {
+  get,
   Component
 } = Ember;
 const {
@@ -16,6 +17,10 @@ export default Component.extend({
   classNameBindings: ['crumbClass'],
 
   crumbClass: oneWay('breadCrumbs.crumbClass'),
-  linkClass: oneWay('breadCrumbs.linkClass'),
+  linkClass: computed('breadCrumbs.linkClass', 'route.isPrefix', function() {
+    const linkClass = get(this, 'breadCrumbs.linkClass');
+    const isPrefix = get(this, 'route.isPrefix');
+    return isPrefix ? `${linkClass} is-prefix` : linkClass;
+  }),
   hasBlock: bool('template').readOnly()
 });
