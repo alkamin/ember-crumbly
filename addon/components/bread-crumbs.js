@@ -93,6 +93,7 @@ export default Component.extend({
         return;
       } else {
         setProperties(breadCrumb, {
+          isPrefix: breadCrumb.hasOwnProperty('isPrefix') ? breadCrumb.isPrefix : false,
           path: breadCrumb.hasOwnProperty('path') ? breadCrumb.path : path,
           linkable: breadCrumb.hasOwnProperty('linkable') ? breadCrumb.linkable : crumbLinkable
         });
