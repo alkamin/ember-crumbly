@@ -17,7 +17,7 @@ export default Component.extend({
   classNameBindings: ['crumbClass'],
 
   crumbClass: computed('breadCrumbs.crumbClass','route.isPrefix', function() {
-    const crumbClass = get(this, 'breadCrumbs.crumbClass');
+    const crumbClass = get(this, 'breadCrumbs.crumbClass') || '';
     const isPrefix = get(this, 'route.isPrefix');
     return isPrefix ? `${crumbClass} is-prefix` : crumbClass;
   }),
